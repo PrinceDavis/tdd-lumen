@@ -1,6 +1,6 @@
 version: '3'
 services:
-  backend:
+  server:
     build:
       context: .
       dockerfile: server/docker/Dockerfile
@@ -9,7 +9,7 @@ services:
      - appnet
     volumes:
       - ./server/application:/var/www/html
-  backend-nginx:
+  server-nginx:
     build:
       context: .
       dockerfile: gateway/docker/Dockerfile
@@ -19,9 +19,9 @@ services:
     networks:
      - appnet
     depends_on:
-      - backend
+      - server
     volumes:
-      - ./backend/application:/var/www/html
+      - ./server/application:/var/www/html
   redis:
     image: redis:alpine
     networks:
