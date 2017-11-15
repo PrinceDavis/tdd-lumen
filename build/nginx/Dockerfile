@@ -1,6 +1,6 @@
 FROM ubuntu:16.04
 
-MAINTAINER Chris Fidao
+MAINTAINER Ossaija ThankGod <codebugsolved@gmail.com>
 
 RUN apt-get update \
     && apt-get install -y nginx \

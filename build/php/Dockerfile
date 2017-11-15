@@ -1,17 +1,13 @@
 FROM ubuntu:16.04
 
-MAINTAINER Chris Fidao
+MAINTAINER Ossaija ThankGod <codebugsolved@gmail.com>
 
-RUN locale-gen en_US.UTF-8
 
-ENV LANG en_US.UTF-8
-ENV LANGUAGE en_US:en
-ENV LC_ALL en_US.UTF-8
 
 RUN apt-get update \
-
+    && apt-get install -y locales && locale-gen en_US.UTF-8 \
     && apt-get install -y curl zip unzip git software-properties-common \
-    && add-apt-repository -y ppa:ondrej/php \
+    && LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/nginx \
     && apt-get update \
     && apt-get install -y php7.0-fpm php7.0-cli php7.0-mcrypt php7.0-gd php7.0-mysql \
        php7.0-pgsql php7.0-imap php-memcached php7.0-mbstring php7.0-xml php7.0-curl \
@@ -21,6 +17,7 @@ RUN apt-get update \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+ENV LANG='en_US.UTF-8' LANGUAGE='en_US.UTF-8' LC_ALL='C.UTF-8'
 ADD php-fpm.conf /etc/php/7.0/fpm/php-fpm.conf
 ADD www.conf /etc/php/7.0/fpm/pool.d/www.conf
 

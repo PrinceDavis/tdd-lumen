@@ -1,27 +1,17 @@
 version: '3'
 services:
-  backend:
-    build:
-      context: .
-      dockerfile: server/docker/Dockerfile
+  server:
     image: ossaijad/server:latest
     networks:
      - appnet
-    volumes:
-      - ./server/application:/var/www/html
-  backend-nginx:
-    build:
-      context: .
-      dockerfile: gateway/docker/Dockerfile
+  server-nginx:
     image: ossaijad/servergateway:latest
     ports:
      - "8080:80"
     networks:
      - appnet
     depends_on:
-      - backend
-    volumes:
-      - ./backend/application:/var/www/html
+      - server
   redis:
     image: redis:alpine
     networks:
@@ -39,5 +29,5 @@ services:
     appnet:
       driver: "bridge"
   volumes:
-    data:
-      driver: "local"
+  data:
+    driver: "local"

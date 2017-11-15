@@ -3,11 +3,11 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 cd $DIR/nginx
-docker build -t shippingdocker/nginx:$1 -t shippingdocker/nginx:latest .
-docker push shippingdocker/nginx:$1
-docker push shippingdocker/nginx:latest
+docker build -t ossaijad/nginx:$1 -t ossaijad/nginx:latest .
+docker push ossaijad/nginx:$1
+docker push ossaijad/nginx:latest
 
 cd $DIR/php
-docker build -t shippingdocker/php:$1 -t shippingdocker/php:latest .
-docker push shippingdocker/php:$1
-docker push shippingdocker/php:latest
+docker build -t ossaijad/php:$1 -t ossaijad/php:latest .
+docker push ossaijad/php:$1
+docker push ossaijad/php:latest

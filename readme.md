@@ -40,15 +40,13 @@ At this point, we've created containers and have them up and running. However, w
 docker run -it --rm \
     -v $(pwd):/opt \
     -w /opt \
-    --network=phpapp_appnet \
-    shippingdocker/php \
+    ossaijad/php \
     composer create-project laravel/laravel application
 
 docker run -it --rm \
     -v $(pwd)/application:/opt \
     -w /opt \
-    --network=phpapp_appnet \
-    shippingdocker/php \
+    ossaijad/php \
     composer require predis/predis
 
 # Restart required to ensure
@@ -96,16 +94,14 @@ If you'd like, we can add Laravel's Auth scaffolding as well. To do that, we nee
 docker run -it --rm \
     -v $(pwd)/application:/opt \
     -w /opt \
-    --network=phpapp_appnet \
-    shippingdocker/php \
+    ossaijad/php \
     php artisan make:auth
 
 # Run migrations for auth scaffolding
 docker run -it --rm \
     -v $(pwd)/application:/opt \
     -w /opt \
-    --network=phpapp_appnet \
-    shippingdocker/php \
+    ossaijad/php \
     php artisan migrate
 ```
 
