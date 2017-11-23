@@ -35,6 +35,9 @@ services:
       MYSQL_PASSWORD: secret
     volumes:
      - data:/var/lib/mysql
+    networks:
+     - appnet
+     
   networks:
     appnet:
       driver: "bridge"
