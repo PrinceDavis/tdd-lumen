@@ -7,7 +7,7 @@ php:
   - '7.1'
   
 before_script:
-  - mv /appplication/src/* /
+  - cd application/src
   - composer self-update
   - composer install --no-interaction
   - cp .env.travis .env
