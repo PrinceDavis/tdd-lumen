@@ -1,11 +1,11 @@
 version: '3'
 services:
-  server:
-    image: ossaijad/server:latest
+  application:
+    image: ossaijad/phpapp:latest
     networks:
      - appnet
-  server-nginx:
-    image: ossaijad/servergateway:latest
+  application-gateway:
+    image: ossaijad/phpappgateway:latest
     ports:
      - "80:80"
     networks:

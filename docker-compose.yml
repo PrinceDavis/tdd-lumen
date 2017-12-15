@@ -1,19 +1,19 @@
 version: '3'
 services:
-  server:
+  application:
     build:
       context: .
-      dockerfile: server/docker/Dockerfile
-    image: ossaijad/server:latest
+      dockerfile: application/docker/Dockerfile
+    image: ossaijad/phpapp:latest
     networks:
      - appnet
     volumes:
-      - ./server/application:/var/www/html
-  server-nginx:
+      - ./application/src:/var/www/html
+  application-gateway:
     build:
       context: .
       dockerfile: gateway/docker/Dockerfile
-    image: ossaijad/servergateway:latest
+    image: ossaijad/phpappgateway:latest
     ports:
      - "8080:80"
     networks:
@@ -21,7 +21,7 @@ services:
     depends_on:
       - server
     volumes:
-      - ./server/application:/var/www/html
+      - ./application/src:/var/www/html
   redis:
     image: redis:alpine
     networks:
