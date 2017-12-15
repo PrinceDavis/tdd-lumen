@@ -4,7 +4,7 @@ services:
     build:
       context: .
       dockerfile: application/docker/Dockerfile
-    image: ossaijad/phpapp:latest
+    image: ossaijad/tdd-lumen:latest
     networks:
      - appnet
     volumes:
@@ -13,13 +13,13 @@ services:
     build:
       context: .
       dockerfile: gateway/docker/Dockerfile
-    image: ossaijad/phpappgateway:latest
+    image: ossaijad/tdd-lumen-gateway:latest
     ports:
-     - "8080:80"
+     - "80:80"
     networks:
      - appnet
     depends_on:
-      - server
+      - application
     volumes:
       - ./application/src:/var/www/html
   redis:
@@ -37,10 +37,9 @@ services:
      - data:/var/lib/mysql
     networks:
      - appnet
-     
-  networks:
-    appnet:
-      driver: "bridge"
-  volumes:
-    data:
-      driver: "local"
+networks:
+  appnet:
+    driver: "bridge"
+volumes:
+  data:
+    driver: "local"

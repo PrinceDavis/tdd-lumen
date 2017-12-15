@@ -1,11 +1,11 @@
 version: '3'
 services:
   application:
-    image: ossaijad/phpapp:latest
+    image: ossaijad/lumen-tdd:latest
     networks:
      - appnet
   application-gateway:
-    image: ossaijad/phpappgateway:latest
+    image: ossaijad/lumen-tdd-gateway:latest
     ports:
      - "80:80"
     networks:

@@ -3,4 +3,4 @@ MAINTAINER Ossaija ThankGod <codebugsolved@gmail.com>
 
 
 
-Copy ./server/application/ /var/www/html
+Copy ./application/src /var/www/html
