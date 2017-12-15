@@ -10,7 +10,6 @@ before_script:
   - cd application/src
   - composer self-update
   - composer install --no-interaction
-  - cp .env.travis .env
   - pear install pear/PHP_CodeSniffer
   - phpenv rehash
   
